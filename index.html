@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Win's 12V DC Light Bulb Experiment</title>
+
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background-color: #000;
+            color: white;
+        }
+
+        #bulb {
+            border: 1px solid #fff;
+        }
+
+        .livestream {
+            width: 80%;
+            max-width: 640px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div align="center" style="padding: 10px;">
+        <h1>Win's 12V DC Light Bulb Experiment</h1>
+        <details>
+            <summary>About the experiment</summary>
+            I bought this 12V DC Light Bulb off of Shopee, a popular online store in Thailand. The box says that the light bulb will last for 30,000 hours and so I want to see if it will actually reach that level of lifespan.
+        </details>
+
+        <div class="container" style="margin: 10px 0px 10px 0px;">
+            <div class="wrapper">
+                <div class="livestream">
+                    <video autoplay id="bulbvideo" class="video-js vjs-default-skin vjs-4-3" controls preload="auto" data-setup=''></video>
+                </div>
+            </div>
+        </div>
+
+        <span>This is in realtime!</span><br>
+
+        <span>Light bulb has been on since: 20th Feb 2022 - 16:00 GMT +7</span><br>
+
+        <span>Current time in Phanat Nikhom, Chon Buri. (Camera time has 30 seconds delay)</span>
+        <h2 id="time"></h2>
+    </div>
+    
+    <script>
+        const player = videojs('bulbvideo');
+            player.src({
+                src: 'https://stream.winscloud.net/hls/obs_stream.m3u8',
+                type: 'application/x-mpegURL'
+            });
+    </script>
+    <script src="time.js"></script>
+</body>
+</html>
